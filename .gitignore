@@ -1,0 +1,11 @@
+# Archivos de Python y Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Entornos virtuales
+venv/
+.env
+
+# Ignorar datasets pesados (descomentar si los CSV superan los 100MB)
+# data/raw/*.csv
