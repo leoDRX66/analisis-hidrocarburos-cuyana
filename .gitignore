@@ -7,5 +7,6 @@ __pycache__/
 venv/
 .env
 
-# Ignorar datasets pesados (descomentar si los CSV superan los 100MB)
+# Ignorar datasets crudos pesados
 # data/raw/*.csv
+!data/raw/*.zip
