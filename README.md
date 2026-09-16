@@ -15,7 +15,10 @@ Para llevar a cabo este análisis, utilizamos información pública y oficial:
 
 ## 🔍 Hallazgos del Análisis Exploratorio (AED)
 > *⏳ Sección en desarrollo (Corresponde a la pre-entrega 2).*
-Aquí detallaremos qué descubrimos sobre la continuidad mensual, la distribución de los pozos en Mendoza y los primeros patrones de producción observados.
+Durante la auditoria y depuración de los datos de la Cuenca Cuyana (2021-2026), identificamos patrones claves que definen el modelado del proyecto:
+- **Calidad y consistencia de los datos:** Consolidamos una base de 246.240 resgistros históricos garantizando trazabilidad prefecta (0 duplicados). Exclusion variables con nulos masivos (vida_util, 87% nulos) y corregimos anomalías físicas (truncamiento de producciones negativas).Además, validamos una alta completitud temporal: el 99,7% de los pozos activos posee la serie mensual ininterrumpida.
+- **Detección de sesgos administrativos:** Al anlizar el padrón histórico, descubrimos 3.290 pozos figuran con "fecha de primera prodicción" exactamente en enero de 2006. Nos percatamos de esto como un artefacto del sistema de registro y no como un evento físico real, un sesgo que será controlado al generar variables de antigüedad.
+- **Redefinición empírica del alcance (Ramp-up vs. Madurez):** El cruce de datasets demostró la extrema madurez del bloque: apenas 42 pozos (1,13%) iniciaron su producción en los últimos 5 años. Este hallazgo empírico justifica enfocar nuestro modelo principal en la resiliencia y declinación de los pozos maduros, derivando el estudio de ramp-up a un análisis exploratorio secundario.
 
 ## 🤖 Modelos de Machine Learning
 > *⏳ Sección en desarrollo (Corresponden a las pre-entregas 3 y 4).*
@@ -29,7 +32,7 @@ Para quienes nos visitan y quieren seguir la evolución del proyecto, aquí regi
 
 | Fecha | Tarea / Hito | Responsable | Estado |
 | :---: | :--- | :---: | :---: |
-| 13/09/2026 | Creación de la estructura del repositorio base y ramas. | Equipo | ✅ Completado |
-| 13/09/2026 | Redacción inicial del README y objetivos del proyecto. | Compañero 2 | 🚧 En progreso |
-| Pendiente | Descarga y limpieza del dataset de SESCO (Filtro Mendoza). | Compañero 1 | ⏳ Pendiente |
-| Pendiente | Inicio del Análisis Exploratorio (EDA) de la Cuenca Cuyana. | Leandro | ⏳ Pendiente |
+| 13/09/2026 | Creación de la estructura del repositorio base y ramas. | Leandro Olarte | ✅ Completado |
+| 14/09/2026 | Descarga y limpieza del dataset de SESCO (Filtro Mendoza). | Milagros Ranaldi | ✅ Completado |
+| 14/09/2026 | Generar Backlog 2° pre-entrega y cracion de tablero en Trello. | Milagros Carrillo | ✅ Completado |
+| 15/09/2026 | Finalizada la Sprint 1, con todos sus hitos cumplidos y la documentación actualizada. | Equipo | ✅ Completado |
