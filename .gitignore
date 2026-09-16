@@ -8,5 +8,6 @@ venv/
 .env
 
 # Ignorar datasets crudos pesados
-# data/raw/*.csv
-!data/raw/*.zip
+data/raw/**/*.csv
+data/raw/**/*.xlsx
+data/raw/**/*.zip
