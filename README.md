@@ -22,6 +22,31 @@ Durante la auditoria y depuración de los datos de la Cuenca Cuyana (2021-2026),
 
 ---
 
+## 👥 Nuestro Equipo
+Somos un equipo de tres integrantes que combina gestión de proyecto, ingeniería de datos y análisis exploratorio para dar vida a este trabajo.
+
+<table align="center">
+  <tr>
+    <td align="center" width="33%">
+      <h3>Leandro Olarte</h3>
+      <img src="https://img.shields.io/badge/Rol-Líder_Técnico_&_Git-00A4E4?style=for-the-badge" alt="Rol Leandro"/>
+      <p>Responsable de la <b>arquitectura del repositorio</b>: estructura base, ramas de trabajo e integración de cambios en <code>main</code>. Garantiza que el código y la documentación se mantengan ordenados y trazables.</p>
+    </td>
+    <td align="center" width="33%">
+      <h3>Milagros Ranaldi</h3>
+      <img src="https://img.shields.io/badge/Rol-Data_Analyst_&_EDA-005a9c?style=for-the-badge" alt="Rol Milagros Ranaldi"/>
+      <p>Encargada de la <b>limpieza y depuración de datos</b> de SESCO y del análisis exploratorio: distribuciones, variables categóricas, valores faltantes y outliers.</p>
+    </td>
+    <td align="center" width="33%">
+      <h3>Milagros Carrillo</h3>
+      <img src="https://img.shields.io/badge/Rol-Scrum_Master_&_Analista-00A4E4?style=for-the-badge" alt="Rol Milagros Carrillo"/>
+      <p>Lidera la <b>planificación ágil</b> (backlog y tablero en Trello) y construye las <b>tablas macro y micro</b> de producción mensual que sustentan el análisis.</p>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## 📅 Tabla de actualizaciones y progreso
 Para quienes nos visitan y quieren seguir la evolución del proyecto, aquí registramos nuestros avances:
 
