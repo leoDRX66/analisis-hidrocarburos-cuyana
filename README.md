@@ -61,6 +61,16 @@ Para quienes nos visitan y quieren seguir la evolución del proyecto, aquí regi
 | 17/09/2026 | Tratamiento de valores faltantes y outliers | Milagros Ranaldi | ✅ Completado |
 | 18/09/2026 | Finalización del sprint 2: análisis y exploración de datos | Equipo | ✅ Completado |
 | 18/09/2026 | Integración y aplicación de cambios de las ramas de trabajo en la rama principal (main) | Leandro Olarte | ✅ Completado |
-| ---------- | Inicio del sprint 3 | Equipo | ⏳ Pendiente |
+| 30/09/2026 | Inicio del Sprint 3: Feature Engineering y preparación del modelo supervisado. | Milagros Ranaldi | ✅ Completado |
+| 02/10/2026 | Selección de pozos maduros con producción continua y construcción de variables temporales (lags y ventanas móviles). | Milagros Ranaldi | ✅ Completado |
+| 03/10/2026 | Creación de las variables objetivo H1–H6 para predecir la producción futura de petróleo. | Milagros Ranaldi | ✅ Completado |
+| 04/10/2026 | Implementación del split temporal y controles para evitar data leakage. | Milagros Carrillo | ✅ Completado |
+| 06/10/2026 | Encoding de variables categóricas, escalado y selección de características para el modelo. | Milagros Carrillo | ✅ Completado |
+| 07/10/2026 | Análisis complementario de `meses_hasta_pico` e implementación del baseline de producción t+1. | Milagros Carrillo | ✅ Completado |
+| 07/10/2026 | Integración inicial del Feature Engineering en `develop` mediante Pull Request #3. | Leandro Olarte | ✅ Completado |
+| 10/10/2026 | Implementación de la comparación de modelos de regresión, ajuste de hiperparámetros y evaluación de overfitting para H1–H6. | Leandro Olarte | ✅ Completado |
+| 10/10/2026 | Actualización del README y documentación del proyecto. | Leandro Olarte | ✅ Completado |
+| Por confirmar | Sprint review para ver como evolución el proyecto, correjir errores y planificar la organización. | Equipo | 🟡 Pendiente |
+
 
 
