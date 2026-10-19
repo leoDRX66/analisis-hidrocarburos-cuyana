@@ -30,6 +30,7 @@ Durante el desarrollo del modelado supervisado, implementamos y evaluamos distin
 - **Pronóstico de producción para el segundo semestre de 2026:** Aplicamos el enfoque de predicción directa H1–H6 sobre **522 pozos maduros**, estimando su producción mensual de julio a diciembre. Los resultados proyectan una disminución de **49.780,97 m³ en julio a 48.939,53 m³ en diciembre**, equivalente a una reducción del **1,69 %**. Estas estimaciones corresponden exclusivamente a los pozos seleccionados y no representan la producción total de la cuenca.
 **Conclusión:** El modelado supervisado permitió pasar del análisis descriptivo de la producción histórica a la generación de pronósticos cuantitativos, incorporando herramientas para evaluar el desempeño predictivo y analizar la evolución futura de los pozos maduros.
 
+
 ---
 
 ## 👥 Nuestro Equipo
