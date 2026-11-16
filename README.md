@@ -20,7 +20,7 @@ Durante la auditoria y depuración de los datos de la Cuenca Cuyana (2021-2026),
 - **Detección de sesgos administrativos:** Al analizar el padrón histórico, descubrimos 3.290 pozos figuran con "fecha de primera producción" exactamente en enero de 2006. Nos percatamos de esto como un artefacto del sistema de registro y no como un evento físico real, un sesgo que será controlado al generar variables de antigüedad.
 - **Redefinición empírica del alcance (Ramp-up vs. Madurez):** El cruce de datasets demostró la extrema madurez del bloque: apenas 42 pozos (1,13%) iniciaron su producción en los últimos 5 años. Este hallazgo empírico justifica enfocar nuestro modelo principal en la resiliencia y declinación de los pozos maduros, derivando el estudio de ramp-up a un análisis exploratorio secundario.
 
-## 🤖 Hallazgos del modelado supervisado (Pre-entrega 3)
+## 🤖 Hallazgos del modelado supervisado
 > *Sección de desarrollo (Corresponde a la pre-entrega 3).* 
 Durante el desarrollo del modelado supervisado, implementamos y evaluamos distintos algoritmos de Machine Learning para predecir la producción futura de petróleo de los pozos maduros de la Cuenca Cuyana, obteniendo los siguientes resultados y hallazgos:
 - **Selección de pozos maduros y preparación de datos:** A partir de los 3.702 pozos originales, identificamos **851 pozos maduros con producción continua**, aplicando criterios de extracción efectiva, producción positiva y al menos 24 meses consecutivos de actividad. Obtuvimos un dataset de **44.948 registros**, sin interrupciones temporales dentro de las secuencias seleccionadas.
@@ -30,11 +30,22 @@ Durante el desarrollo del modelado supervisado, implementamos y evaluamos distin
 - **Pronóstico de producción para el segundo semestre de 2026:** Aplicamos el enfoque de predicción directa H1–H6 sobre **522 pozos maduros**, estimando su producción mensual de julio a diciembre. Los resultados proyectan una disminución de **49.780,97 m³ en julio a 48.939,53 m³ en diciembre**, equivalente a una reducción del **1,69 %**. Estas estimaciones corresponden exclusivamente a los pozos seleccionados y no representan la producción total de la cuenca.
 **Conclusión:** El modelado supervisado permitió pasar del análisis descriptivo de la producción histórica a la generación de pronósticos cuantitativos, incorporando herramientas para evaluar el desempeño predictivo y analizar la evolución futura de los pozos maduros.
 
+## 🧩 Hallazgos del modelado no supervisado (Clustering)
+> *Sección de desarrollo (Corresponde a la entrega final).*
+Con el objetivo de complementar los pronósticos cuantitativos y descubrir tipologías operativas latentes, aplicamos algoritmos de aprendizaje no supervisado para segmentar los pozos maduros según su comportamiento productivo y características físicas:
+- **Construcción del dataset a nivel pozo:** Partiendo de los 38.858 registros históricos sin fuga temporal (hasta diciembre de 2024), agregamos las métricas mensuales en una única fila por pozo (`idpozo`), consolidando una matriz de **580 pozos únicos**.
+- **Selección de variables y estandarización:** Tras descartar variables sin variabilidad (`iny_gas`, `iny_co2`), con nulos masivos (`vida_util`, 99,94 %) o altamente colineales (`prod_pet_mediana` y `tef_std`), seleccionamos 6 atributos clave: nivel y dispersión de petróleo (`prod_pet_media`, `prod_pet_std`), producción media de gas y agua (`prod_gas_media`, `prod_agua_media`), tiempo efectivo de flujo (`tef_media`) y `profundidad`. Aplicamos `StandardScaler` para evitar sesgos por magnitud en el cálculo de distancias.
+- **Optimización y selección del modelo (K-Means):** Evaluamos configuraciones entre $k = 2$ y $k = 8$ mediante el método del codo y el coeficiente de silueta. Seleccionamos **`k = 4`** al alcanzar el máximo índice Silhouette (**0,333**) y presentar el punto de inflexión óptimo en la curva de inercia.
+- **Identificación de perfiles productivos:** La segmentación permitió caracterizar cuatro grupos operativos bien diferenciados:
+  - **Cluster 0 (122 pozos — Alta extracción de agua y gas):** Pozos relativamente someros (profundidad media de 2.019 m) con buena producción de petróleo (122,46 m³), elevada producción de gas y un corte de agua muy alto (10.030,41 m³).
+  - **Cluster 1 (71 pozos — Baja productividad e inestabilidad operativa):** Presentan el menor rendimiento medio de petróleo (62,37 m³), alta dispersión relativa y el menor tiempo efectivo de flujo (21,29 días/mes).
+  - **Cluster 2 (356 pozos — Perfil base de la cuenca):** Concentra el 61,4 % de la muestra analizada, exhibiendo valores intermedios y estables en producción de petróleo (79,68 m³), agua y profundidad (2.599 m).
+  - **Cluster 3 (31 pozos — Pozos profundos de alta productividad):** Grupo reducido ubicado a mayor profundidad (3.138 m promedio) que lidera la extracción de petróleo (332,15 m³) y gas con muy baja presencia de agua.
 
 ---
 
 ## 👥 Nuestro Equipo
-Somos un equipo de tres integrantes que combina gestión de proyecto, ingeniería de datos y análisis exploratorio para dar vida a este trabajo.
+Somos un equipo de tres desarrolladores de software con formación previa en programación, metodologías ágiles, ingeniería de datos y gestión del ciclo de vida de proyectos. Si bien cada integrante asumió un foco específico según sus fortalezas para organizar el flujo de trabajo, todos participamos activamente en el análisis y aplicamos de manera conjunta los conocimientos de Data Science adquiridos a lo largo del curso.
 
 <table align="center">
   <tr>
@@ -81,7 +92,11 @@ Para quienes nos visitan y quieren seguir la evolución del proyecto, aquí regi
 | 07/10/2026 | Integración inicial del Feature Engineering en `develop` mediante Pull Request #3. | Leandro Olarte | ✅ Completado |
 | 10/10/2026 | Implementación de la comparación de modelos de regresión, ajuste de hiperparámetros y evaluación de overfitting para H1–H6. | Leandro Olarte | ✅ Completado |
 | 10/10/2026 | Actualización del README y documentación del proyecto. | Leandro Olarte | ✅ Completado |
-| Por confirmar | Sprint review para ver como evolución el proyecto, correjir errores y planificar la organización. | Equipo | 🟡 Pendiente |
-
-
-
+| 12/11/2026 | Inicio del Sprint 5: Diseño del pipeline de clustering y agregación del dataset a nivel pozo. | Milagros Ranaldi | ✅ Completado |
+| 13/11/2026 | Análisis de correlación, selección de 6 variables productivas/físicas y estandarización mediante `StandardScaler`. | Milagros Carrillo | ✅ Completado |
+| 14/11/2026 | Evaluación de hiperparámetros de clustering (Método del Codo e índice Silhouette para $k=2..8$) y entrenamiento de K-Means ($k=4$). | Milagros Ranaldi | ✅ Completado |
+| 15/11/2026 | Caracterización estadística de los 4 perfiles de pozos, generación de visualizaciones comparativas e integración en el repositorio. | Milagros Ranaldi | ✅ Completado |
+| 16/11/2026 | Actualización final del README con los hallazgos del modelado no supervisado. | Leandro Olarte | ✅ Completado |
+| 16/11/2026 | Inicio de la SPRINT 6 - Integración y Entregas (Git). | Leandro Olarte | ✅ Completado |
+| 16/11/2026 | Pull request de las ramas del repositorio a la rama main para entrega final. | Leandro Olarte | ✅ Completado |
+| Por confirmar | Sprint review final para validar el cierre del proyecto, revisar entregables y preparar la presentación. | Equipo | 🟡 Pendiente |
