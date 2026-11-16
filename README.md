@@ -13,12 +13,23 @@ Para llevar a cabo este análisis, utilizamos información pública y oficial:
 - **Fuente Principal:** SESCO (Secretaría de Energía de la Nación) - Capítulo IV. Provee datos de producción de petróleo y gas con granularidad mensual por pozo.
 - **Fuente Complementaria:** Argentina Oil & Gas Dataset (Kaggle). Utilizado para incorporar variables de contexto del mercado, específicamente las variaciones del precio del barril Brent.
 
-## 🔍 Hallazgos del Análisis Exploratorio (AED)
+## 🔍 Hallazgos del análisis exploratorio (AED)
 > *⏳ Sección en desarrollo (Corresponde a la pre-entrega 2).*
 Durante la auditoria y depuración de los datos de la Cuenca Cuyana (2021-2026), identificamos patrones claves que definen el modelado del proyecto:
 - **Calidad y consistencia de los datos:** Consolidamos una base de 246.240 registros históricos garantizando trazabilidad perfecta (0 duplicados). Excluimos variables con nulos masivos (vida_util, 87% nulos) y corregimos anomalías físicas (truncamiento de producciones negativas). Además, validamos una alta completitud temporal: el 99,7% de los pozos activos posee la serie mensual ininterrumpida.
 - **Detección de sesgos administrativos:** Al analizar el padrón histórico, descubrimos 3.290 pozos figuran con "fecha de primera producción" exactamente en enero de 2006. Nos percatamos de esto como un artefacto del sistema de registro y no como un evento físico real, un sesgo que será controlado al generar variables de antigüedad.
 - **Redefinición empírica del alcance (Ramp-up vs. Madurez):** El cruce de datasets demostró la extrema madurez del bloque: apenas 42 pozos (1,13%) iniciaron su producción en los últimos 5 años. Este hallazgo empírico justifica enfocar nuestro modelo principal en la resiliencia y declinación de los pozos maduros, derivando el estudio de ramp-up a un análisis exploratorio secundario.
+
+## 🤖 Hallazgos del modelado supervisado (Pre-entrega 3)
+> *Sección de desarrollo (Corresponde a la pre-entrega 3).* 
+Durante el desarrollo del modelado supervisado, implementamos y evaluamos distintos algoritmos de Machine Learning para predecir la producción futura de petróleo de los pozos maduros de la Cuenca Cuyana, obteniendo los siguientes resultados y hallazgos:
+- **Selección de pozos maduros y preparación de datos:** A partir de los 3.702 pozos originales, identificamos **851 pozos maduros con producción continua**, aplicando criterios de extracción efectiva, producción positiva y al menos 24 meses consecutivos de actividad. Obtuvimos un dataset de **44.948 registros**, sin interrupciones temporales dentro de las secuencias seleccionadas.
+- **Ingeniería de características y predicción por horizontes:** Incorporamos variables temporales (*lags*, promedios y desviaciones móviles) para representar el comportamiento histórico de cada pozo. Construimos seis variables objetivo (H1–H6), permitiendo estimar la producción entre uno y seis meses hacia adelante. El conjunto histórico con características y objetivos completos quedó compuesto por **34.736 registros**.
+- **Selección de variables y prevención de fuga temporal:** Dividimos los datos cronológicamente, utilizando 2021–2024 para entrenamiento y 2025 para evaluación, con controles para reducir el *data leakage*. Excluimos `empresa` debido a cambios de operadores durante 2025 y descartamos la antigüedad productiva por inconsistencias en las fechas históricas de inicio. Mantuvimos `areayacimiento` como variable categórica.
+- **Entrenamiento y evaluación de modelos:** Implementamos y comparamos modelos como Regresión Lineal, Random Forest y k-NN, utilizando MAE, RMSE y R² para evaluar su desempeño. En el baseline de predicción del mes siguiente (H1), la **Regresión Lineal obtuvo un MAE de 11,68 m³**, mejorando la referencia de persistencia (12,18 m³). También incorporamos ajustes de hiperparámetros y análisis de *overfitting*.
+- **Pronóstico de producción para el segundo semestre de 2026:** Aplicamos el enfoque de predicción directa H1–H6 sobre **522 pozos maduros**, estimando su producción mensual de julio a diciembre. Los resultados proyectan una disminución de **49.780,97 m³ en julio a 48.939,53 m³ en diciembre**, equivalente a una reducción del **1,69 %**. Estas estimaciones corresponden exclusivamente a los pozos seleccionados y no representan la producción total de la cuenca.
+**Conclusión:** El modelado supervisado permitió pasar del análisis descriptivo de la producción histórica a la generación de pronósticos cuantitativos, incorporando herramientas para evaluar el desempeño predictivo y analizar la evolución futura de los pozos maduros.
+
 
 ---
 
