@@ -100,3 +100,10 @@ Para quienes nos visitan y quieren seguir la evolución del proyecto, aquí regi
 | 16/11/2026 | Inicio de la SPRINT 6 - Integración y Entregas (Git). | Leandro Olarte | ✅ Completado |
 | 16/11/2026 | Pull request de las ramas del repositorio a la rama main para entrega final. | Leandro Olarte | ✅ Completado |
 | Por confirmar | Sprint review final para validar el cierre del proyecto, revisar entregables y preparar la presentación. | Equipo | 🟡 Pendiente |
+
+---
+
+## 📅 Tablero trello
+Para quienes nos visitan y quieren seguir la evolución del proyecto y el detalle de la distribución de tareas por sprint, pueden consultar nuestro tablero ágil o revisar el resumen de hitos a continuación:
+
+[![Ver Tablero en Trello](https://img.shields.io/badge/Tablero_Ágil-Trello-0079BF?style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/b/Wssp4DLG/analisis-hidrocarburos-cuyana)
